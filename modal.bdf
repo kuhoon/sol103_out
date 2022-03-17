@@ -1,0 +1,158 @@
+$ MSC.Nastran input file created on February  25, 2022 at 13:00:44 by
+$ Patran 2018
+$ Direct Text Input for Nastran System Cell Section
+$ Normal Modes Analysis, Database
+SOL 103
+CEND
+ECHO = NONE
+$ Using Nastran default values for RESVEC
+MPC = 2
+SUBCASE 1
+$ Subcase name : Default
+   SUBTITLE=Default
+   METHOD = 1
+   SPC = 2
+   VECTOR(SORT1,REAL)=ALL
+   SPCFORCES(SORT1,REAL)=ALL
+BEGIN BULK
+PARAM    POST    0
+PARAM   PRTMAXIM YES
+EIGRL    1                       10      0
+$ Elements and Element Properties for region : pbeam.26
+PBEAM    26      1      10524.  2.587+8 2.587+7         5.126+8
++
+         YES    1.      10524.  2.587+8 2.587+7         5.126+8
++
+        1.      1.
+$ Pset: "pbeam.26" will be imported as: "pbeam.26"
+CBEAM    35      26      1       2      100.     0.      0.
+$ Elements and Element Properties for region : pbeam.27
+PBEAM    27      1      8371.   2.041+8 2.041+7         4.184+8
++
+         YES    1.      8371.   2.041+8 2.041+7         4.184+8
++
+        1.      1.
+$ Pset: "pbeam.27" will be imported as: "pbeam.27"
+CBEAM    36      27      2       5      100.     0.      0.
+$ Elements and Element Properties for region : pbeam.28
+PBEAM    28      1      6049.   1.432+8 1.432+7         3.067+8
++
+         YES    1.      6049.   1.432+8 1.432+7         3.067+8
++
+        1.      1.
+$ Pset: "pbeam.28" will be imported as: "pbeam.28"
+CBEAM    37      28      5       7      100.     0.      0.
+$ Elements and Element Properties for region : pbeam.29
+PBEAM    29      1      5091.   1.189+8 1.189+7         2.73+8
++
+         YES    1.      5091.   1.189+8 1.189+7         2.73+8
++
+        1.      1.
+$ Pset: "pbeam.29" will be imported as: "pbeam.29"
+CBEAM    38      29      7       8      100.     0.      0.
+$ Elements and Element Properties for region : pbeam.30
+PBEAM    30      1      4373.   9.52+7  9.52+6          2.381+8
++
+         YES    1.      4373.   9.52+7  9.52+6          2.381+8
++
+        1.      1.
+$ Pset: "pbeam.30" will be imported as: "pbeam.30"
+CBEAM    39      30      8       10     100.     0.      0.
+$ Elements and Element Properties for region : pbeam.31
+PBEAM    31      1      3533.   6.23+7  6.23+6          1.612+8
++
+         YES    1.      3533.   6.23+7  6.23+6          1.612+8
++
+        1.      1.
+$ Pset: "pbeam.31" will be imported as: "pbeam.31"
+CBEAM    40      31      10      14     100.     0.      0.
+$ Elements and Element Properties for region : pbeam.32
+PBEAM    32      1      2057.   2.195+7 2.195+6         6.233+7
++
+         YES    1.      2057.   2.195+7 2.195+6         6.233+7
++
+        1.      1.
+$ Pset: "pbeam.32" will be imported as: "pbeam.32"
+CBEAM    41      32      14      18     100.     0.      0.
+$ Elements and Element Properties for region : pbeam.33
+PBEAM    33      1      1271.   7.446+6 744600.         2.356+7
++
+         YES    1.      1271.   7.446+6 744600.         2.356+7
++
+        1.      1.
+$ Pset: "pbeam.33" will be imported as: "pbeam.33"
+CBEAM    42      33      18      22     100.     0.      0.
+$ Elements and Element Properties for region : pbeam.34
+PBEAM    34      1      987.    2.759+6 275900.         9.758+6
++
+         YES    1.      987.    2.759+6 275900.         9.758+6
++
+        1.      1.
+$ Pset: "pbeam.34" will be imported as: "pbeam.34"
+CBEAM    43      34      22      24     100.     0.      0.
+$ Elements and Element Properties for region : conm2
+CONM2    1       1       0      .0123    0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    2       2       0      .0084    0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    5       5       0      .0061    0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    7       7       0      .007     0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    8       8       0      .0042    0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    10      10      0      .0034    0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    14      14      0      .002     0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    18      18      0      .0012    0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    22      22      0      9.-4     0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    24      24      0      8.-4     0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+CONM2    25      25      0      .3344    0.      0.      0.
+         0.      0.      0.      0.      0.      0.
+$ Referenced Material Records
+$ Material Record : mat1.1
+$ Description of Material :
+MAT1     1      71280.  27000.  .32     1.-16
+$ Multipoint Constraints of Group : default_group
+MPCADD   2       1
+MPC      1       25      1      -1.      7       1      1.
+MPC      1       25      2      -1.      7       2      1.
+MPC      1       25      3      -1.      7       3      1.
+MPC      1       25      4      -1.      7       4      1.
+MPC      1       25      5      -1.      7       5      1.
+MPC      1       25      6      -1.      7       6      1.
+$ Nodes of Group : default_group
+GRID     1              1202.    0.      0.
+GRID*    2                              1194.           5.1006539184-14
+*       833.
+GRID*    5                              1197.           1.1695376932-13
+*       1910.
+GRID*    7                              1242.           1.6091858941-13
+*       2628.            1
+GRID*    8                              1170.           1.9086120365-13
+*       3117.
+GRID*    10                             1159.           2.3286658886-13
+*       3803.
+GRID*    14                             1133.           3.1681612694-13
+*       5174.
+GRID*    18                             1066.           4.0082689736-13
+*       6546.
+GRID*    22                             1023.           4.8477643544-13
+*       7917.
+GRID*    24                             1005.           5.2580210321-13
+*       8587.
+GRID*    25                             -234.           1.6091858941-13
+*       2628.            1
+$ Loads for Load Case : Default
+SPCADD   2       50
+$ Displacement Constraints of Load Set : spc1.50
+SPC1     50      123456  1
+$ Referenced Coordinate Frames
+CORD2R*  1                               0.              0.
+*        0.              0.             -1.             6.1232339957-17
+        1.       0.      0.
+ENDDATA fbf3fa1c
