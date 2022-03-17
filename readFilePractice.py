@@ -1,16 +1,11 @@
-import pyNastran
 import os
 
-# bdf_filename = os.path.join('modal.bdf')
-#
-from pyNastran.bdf.bdf import BDF, read_bdf, CaseControlDeck
+# from IPython.display import HTML as html_print
+from pyNastran.bdf.bdf import BDF, CaseControlDeck
 model = BDF()
-# model.read_bdf(bdf_filename)
 
-
-
-E = 27397
-G = 27000
+E = 72397.0
+G = 27000.0
 nu = 0.32
 rho = 0.0000000000000001
 mat = model.add_mat1(1, E, G, nu, rho)
@@ -20,14 +15,14 @@ model.add_grid(1, [1299.18, 0.00, 0.00])
 model.add_grid(2, [1299.18, 416.47, 0.00])
 model.add_grid(3, [1299.18, 832.94, 0.00])
 model.add_grid(4, [1299.13, 1191.88, 0.00])
-model.add_grid(5, [1299.08, 1150.81, 0.00])
+model.add_grid(5, [1299.08, 1550.81, 0.00])
 model.add_grid(6, [1299.04, 1909.75, 0.00])
 model.add_grid(7, [1298.99, 2268.69, 0.00])
 model.add_grid(8, [1298.94, 2627.62, 0.00])
 model.add_grid(9, [1298.87, 3117.08, 0.00])
 model.add_grid(10, [1283.52, 3459.95, 0.00])
 model.add_grid(11, [1268.17, 3802.81, 0.00])
-model.add_grid(12, [1252.82, 3459.95, 0.00])
+model.add_grid(12, [1252.82, 4145.68, 0.00])
 model.add_grid(13, [1237.46, 4488.548, 0.00])
 model.add_grid(14, [1222.11, 4831.41, 0.00])
 model.add_grid(15, [1206.76, 5174.28, 0.00])
@@ -44,7 +39,7 @@ model.add_grid(25, [1053.96, 8587.00, 0.00])
 model.add_grid(100, [-234.5, 2627.6, 0.00])
 model.add_grid(101, [748.5, 2627.6, 0.00])
 
-# add_conm2(eid, nid, mass, cid=0, X=None, I=None)
+# add_conm2(eid, nid, mass, cid=0, X=[], I=[])
 model.add_conm2(1, 1, 0.01400159)
 model.add_conm2(2, 2, 0.02484664)
 model.add_conm2(3, 3, 0.02546982)
@@ -54,6 +49,7 @@ model.add_conm2(6, 6, 0.01694792)
 model.add_conm2(7, 7, 0.0160897)
 model.add_conm2(8, 8, 0.04461853)
 model.add_conm2(9, 9, 0.01657169)
+model.add_conm2(10, 10, 0.01297902)
 model.add_conm2(11, 11, 0.01210256)
 model.add_conm2(12, 12, 0.01126236)
 model.add_conm2(13, 13, 0.01045264)
@@ -73,13 +69,13 @@ model.add_conm2(100, 100, 0.3344)
 model.add_conm2(101, 101, 0.1368)
 
 # add_pbeam(pid, mid, xxb: list[float], so: list[str], area: list[float], i1: list[float], i2: list[float],
-# i12: list[float], j: list[float], nsm: Any = None, c1: Any = None, c2: Any = None, d1: Any = None, d2: Any = None,
-# e1: Any = None, e2: Any = None, f1: Any = None, f2: Any = None, k1: float = 1., k2: float = 1., s1: float = 0.,
-# s2: float = 0., nsia: float = 0., nsib: Any = None, cwa: float = 0., cwb: Any = None, m1a: float = 0., m2a: float =
-# 0., m1b: Any = None, m2b: Any = None, n1a: float = 0., n2a: float = 0., n1b: Any = None, n2b: Any = None,
+# i12: list[float], j: list[float], nsm: Any = [], c1: Any = [], c2: Any = [], d1: Any = [], d2: Any = [],
+# e1: Any = [], e2: Any = [], f1: Any = [], f2: Any = [], k1: float = 1., k2: float = 1., s1: float = 0.,
+# s2: float = 0., nsia: float = 0., nsib: Any = [], cwa: float = 0., cwb: Any = [], m1a: float = 0., m2a: float =
+# 0., m1b: Any = [], m2b: Any = [], n1a: float = 0., n2a: float = 0., n1b: Any = [], n2b: Any = [],
 # comment: Any = '') -> PBEAM) model.add_pbeam(1,1,[1.0],['YES'],[12157.813], [331910581.134], [1100289834.703], [0],
 # [609701318.281])
-#ctrl+d = 해당 줄 복사, ctrl+/ = 주석처리, shift + d / = 여러줄, ctrl shift alt j = 전체변환
+# ctrl+d = 해당 줄 복사, ctrl+/ = 주석처리, shift + d / = 여러줄, ctrl shift alt j = 전체변환
 
 mid = 1
 model.add_pbeam(1, mid, [0.0], ['YES'], [12157.813], [331910581.134], [1100289834.703], [0], [609701318.281])
@@ -108,49 +104,54 @@ model.add_pbeam(23, mid, [0.0], ['YES'], [986.596], [3313860.021], [28472032.705
 model.add_pbeam(24, mid, [0.0], ['YES'], [920.852], [2519174.587], [23315700.227], [0], [7654888.444])
 
 
-model.add_cbeam(1, 1, [1,2],None, 100 )
-model.add_cbeam(2, 2, [2,3],None, 100 )
-model.add_cbeam(3, 3, [3,4],None, 100 )
-model.add_cbeam(4, 4, [4,5],None, 100 )
-model.add_cbeam(5, 5, [5,6],None, 100 )
-model.add_cbeam(6, 6, [6,7],None, 100 )
-model.add_cbeam(7, 7, [7,8],None, 100 )
-model.add_cbeam(8, 8, [8,9],None, 100 )
-model.add_cbeam(9, 9, [9,10],None, 100 )
-model.add_cbeam(10, 10, [10,11],None, 100 )
-model.add_cbeam(11, 11, [11,12],None, 100 )
-model.add_cbeam(12, 12, [12,13],None, 100 )
-model.add_cbeam(13, 13, [13,14],None, 100 )
-model.add_cbeam(14, 14, [14,15],None, 100 )
-model.add_cbeam(15, 15, [15,16],None, 100 )
-model.add_cbeam(16, 16, [16,17],None, 100 )
-model.add_cbeam(17, 17, [17,18],None, 100 )
-model.add_cbeam(18, 18, [18,19],None, 100 )
-model.add_cbeam(19, 19, [19,20],None, 100 )
-model.add_cbeam(20, 20, [20,21],None, 100 )
-model.add_cbeam(21, 21, [21,22],None, 100 )
-model.add_cbeam(22, 22, [22,23],None, 100 )
-model.add_cbeam(23, 23, [23,24],None, 100 )
-model.add_cbeam(24, 24, [24,25],None, 100 )
+model.add_cbeam(1, 1, [1, 2], [], 100)
+model.add_cbeam(2, 2, [2, 3], [], 100)
+model.add_cbeam(3, 3, [3, 4], [], 100)
+model.add_cbeam(4, 4, [4, 5], [], 100)
+model.add_cbeam(5, 5, [5, 6], [], 100)
+model.add_cbeam(6, 6, [6, 7], [], 100)
+model.add_cbeam(7, 7, [7, 8], [], 100)
+model.add_cbeam(8, 8, [8, 9], [], 100)
+model.add_cbeam(9, 9, [9, 10], [], 100)
+model.add_cbeam(10, 10, [10, 11], [], 100)
+model.add_cbeam(11, 11, [11, 12], [], 100)
+model.add_cbeam(12, 12, [12, 13], [], 100)
+model.add_cbeam(13, 13, [13, 14], [], 100)
+model.add_cbeam(14, 14, [14, 15], [], 100)
+model.add_cbeam(15, 15, [15, 16], [], 100)
+model.add_cbeam(16, 16, [16, 17], [], 100)
+model.add_cbeam(17, 17, [17, 18], [], 100)
+model.add_cbeam(18, 18, [18, 19], [], 100)
+model.add_cbeam(19, 19, [19, 20], [], 100)
+model.add_cbeam(20, 20, [20, 21], [], 100)
+model.add_cbeam(21, 21, [21, 22], [], 100)
+model.add_cbeam(22, 22, [22, 23], [], 100)
+model.add_cbeam(23, 23, [23, 24], [], 100)
+model.add_cbeam(24, 24, [24, 25], [], 100)
 
 spc_id = 50
 model.add_spc1(spc_id, '123456', [1])
 
-model.add_rbe2(51, 8, '123456', 100)
-model.add_rbe2(52, 8, '123456', 101)
+model.add_rbe2(51, 8, '123456', [100])
+model.add_rbe2(52, 8, '123456', [101])
+
+eigrl = model.add_eigrl(10, nd=10)
 
 model.sol = 103  # start=103
 cc = CaseControlDeck([
     'SUBCASE 1',
-    'SUBTITLE=Default'
-    '  METHOD = 1',  # TODO: remove
-    '  SPC = %s' % spc_id,
-    # '  VECTOR(SORT1,REAL)=ALL',
-    # '  SPCFORCES(SORT1,REAL)=ALL'
+    'SUBTITLE = Default',
+    'METHOD = 10',
+    'SPC = %s' % spc_id,
+    'VECTOR(SORT1,REAL)=ALL',
+    'SPCFORCES(SORT1, REAL) = ALL',
+    'BEGIN BULK'
 ])
+model.case_control_deck = cc
+model.validate()
 
 bdf_filename_out = os.path.join('sol103_OUT.bdf')
-model.write_bdf(bdf_filename_out, size=16, is_double=False)
+model.write_bdf(bdf_filename_out, enddata=True)
 print(bdf_filename_out)
 
 print('----------------------------------------------------------------------------------------------------')
