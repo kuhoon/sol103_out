@@ -68,13 +68,6 @@ model.add_conm2(25, 25, 0.002293105)
 model.add_conm2(100, 100, 0.3344)
 model.add_conm2(101, 101, 0.1368)
 
-# add_pbeam(pid, mid, xxb: list[float], so: list[str], area: list[float], i1: list[float], i2: list[float],
-# i12: list[float], j: list[float], nsm: Any = [], c1: Any = [], c2: Any = [], d1: Any = [], d2: Any = [],
-# e1: Any = [], e2: Any = [], f1: Any = [], f2: Any = [], k1: float = 1., k2: float = 1., s1: float = 0.,
-# s2: float = 0., nsia: float = 0., nsib: Any = [], cwa: float = 0., cwb: Any = [], m1a: float = 0., m2a: float =
-# 0., m1b: Any = [], m2b: Any = [], n1a: float = 0., n2a: float = 0., n1b: Any = [], n2b: Any = [],
-# comment: Any = '') -> PBEAM) model.add_pbeam(1,1,[1.0],['YES'],[12157.813], [331910581.134], [1100289834.703], [0],
-# [609701318.281])
 # ctrl+d = 해당 줄 복사, ctrl+/ = 주석처리, shift + d / = 여러줄, ctrl shift alt j = 전체변환
 
 mid = 1
