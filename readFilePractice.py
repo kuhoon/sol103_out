@@ -4,13 +4,14 @@ import os
 from pyNastran.bdf.bdf import BDF, CaseControlDeck
 model = BDF()
 
+
 E = 72397.0
 G = 27000.0
 nu = 0.32
 rho = 0.0000000000000001
 mat = model.add_mat1(1, E, G, nu, rho)
 
-# add_grid(nid, xyz, cp=0, cd=0, ps='', seid=0)
+
 model.add_grid(1, [1299.18, 0.00, 0.00])
 model.add_grid(2, [1299.18, 416.47, 0.00])
 model.add_grid(3, [1299.18, 832.94, 0.00])
@@ -39,7 +40,7 @@ model.add_grid(25, [1053.96, 8587.00, 0.00])
 model.add_grid(100, [-234.5, 2627.6, 0.00])
 model.add_grid(101, [748.5, 2627.6, 0.00])
 
-# add_conm2(eid, nid, mass, cid=0, X=[], I=[])
+
 model.add_conm2(1, 1, 0.01400159)
 model.add_conm2(2, 2, 0.02484664)
 model.add_conm2(3, 3, 0.02546982)
@@ -68,7 +69,9 @@ model.add_conm2(25, 25, 0.002293105)
 model.add_conm2(100, 100, 0.3344)
 model.add_conm2(101, 101, 0.1368)
 
+
 # ctrl+d = 해당 줄 복사, ctrl+/ = 주석처리, shift + d / = 여러줄, ctrl shift alt j = 전체변환
+
 
 mid = 1
 model.add_pbeam(1, mid, [0.0], ['YES'], [12157.813], [331910581.134], [1100289834.703], [0], [609701318.281])
@@ -122,14 +125,16 @@ model.add_cbeam(22, 22, [22, 23], [], 100)
 model.add_cbeam(23, 23, [23, 24], [], 100)
 model.add_cbeam(24, 24, [24, 25], [], 100)
 
+
 spc_id = 50
 model.add_spc1(spc_id, '123456', [1])
+
 
 model.add_rbe2(51, 8, '123456', [100])
 model.add_rbe2(52, 8, '123456', [101])
 
-eigrl = model.add_eigrl(10, nd=10)
 
+eigrl = model.add_eigrl(10, nd=10)
 model.sol = 103  # start=103
 cc = CaseControlDeck([
     'SUBCASE 1',
@@ -148,5 +153,3 @@ model.write_bdf(bdf_filename_out, enddata=True)
 print(bdf_filename_out)
 
 print('----------------------------------------------------------------------------------------------------')
-
-# print(model.get_bdf_stats())
