@@ -58,7 +58,6 @@ with open("elements.dat") as datFile:
 with open("elements.dat") as datFile:
     idToList = [data.split()[2] for data in datFile]
 
-
 # delete column name
 del idList1[0]
 del xValueList1[0]
