@@ -11,7 +11,6 @@ nu = 0.32
 rho = 0.0000000000000001
 mat = model.add_mat1(1, E, G, nu, rho)
 
-
 model.add_grid(1, [1299.18, 0.00, 0.00])
 model.add_grid(2, [1299.18, 416.47, 0.00])
 model.add_grid(3, [1299.18, 832.94, 0.00])
