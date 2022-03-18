@@ -1,3 +1,5 @@
+# ctrl+d = 해당 줄 복사, ctrl+/ = 주석처리, shift + d / = 여러줄, ctrl shift alt j = 전체변환
+
 import os
 
 # from IPython.display import HTML as html_print
@@ -29,6 +31,16 @@ with open("mass_conc.dat") as datFile:
     yValueList2 = [data.split()[3] for data in datFile]
 with open("mass_conc.dat") as datFile:
     zValueList2 = [data.split()[4] for data in datFile]
+with open("mass_conc.dat") as datFile:
+    conm2List1 = [data.split()[1] for data in datFile]
+with open("mass_conc.dat") as datFile:
+    Mlump1 = [data.split()[5] for data in datFile]
+
+# open mass_lump.dat file_Wing
+with open("mass_lump.dat") as datFile:
+    conm2List2 = [data.split()[0] for data in datFile]
+with open("mass_lump.dat") as datFile:
+    Mlump2 = [data.split()[2] for data in datFile]
 
 # delete column name
 del idList1[0]
@@ -40,48 +52,32 @@ del xValueList2[0]
 del yValueList2[0]
 del zValueList2[0]
 
+# delete column name
+del conm2List1[0]
+del Mlump1[0]
+del conm2List2[0]
+del Mlump2[0]
+
+# grad list merge
 idList = idList1 + idList2
 xValueList = xValueList1 + xValueList2
 yValueList = yValueList1 + yValueList2
 zValueList = zValueList1 + zValueList2
 
+# conm2 list merge
+conm2List = conm2List1 + conm2List2
+Mlump = Mlump1 + Mlump2
+
 # insert model.add_grid(id_no, x, y, z)
 for i, x, y, z in zip(idList, xValueList, yValueList, zValueList):
     model.add_grid(int(i), [float(x), float(y), float(z)])
 
+# insert model.add_grid(id_no, x, y, z)
+for j, i, m in zip(conm2List, idList, Mlump):
+    model.add_conm2(int(j), int(i), float(m))
 
 
 
-model.add_conm2(1, 1, 0.01400159)
-model.add_conm2(2, 2, 0.02484664)
-model.add_conm2(3, 3, 0.02546982)
-model.add_conm2(4, 4, 0.01906899)
-model.add_conm2(5, 5, 0.01796483)
-model.add_conm2(6, 6, 0.01694792)
-model.add_conm2(7, 7, 0.0160897)
-model.add_conm2(8, 8, 0.04461853)
-model.add_conm2(9, 9, 0.01657169)
-model.add_conm2(10, 10, 0.01297902)
-model.add_conm2(11, 11, 0.01210256)
-model.add_conm2(12, 12, 0.01126236)
-model.add_conm2(13, 13, 0.01045264)
-model.add_conm2(14, 14, 0.009674809)
-model.add_conm2(15, 15, 0.008933798)
-model.add_conm2(16, 16, 0.008255062)
-model.add_conm2(17, 17, 0.007709694)
-model.add_conm2(18, 18, 0.007193918)
-model.add_conm2(19, 19, 0.006732572)
-model.add_conm2(20, 20, 0.006313959)
-model.add_conm2(21, 21, 0.005904836)
-model.add_conm2(22, 22, 0.005501775)
-model.add_conm2(23, 23, 0.005051136)
-model.add_conm2(24, 24, 0.004619121)
-model.add_conm2(25, 25, 0.002293105)
-model.add_conm2(100, 100, 0.3344)
-model.add_conm2(101, 101, 0.1368)
-
-
-# ctrl+d = 해당 줄 복사, ctrl+/ = 주석처리, shift + d / = 여러줄, ctrl shift alt j = 전체변환
 
 
 mid = 1
