@@ -118,7 +118,7 @@ model.add_rbe2(51, 8, '123456', [100])
 model.add_rbe2(52, 8, '123456', [101])
 
 
-eigrl = model.add_eigrl(10, nd=10)
+eigrl = model.add_eigrl(10, nd=10) # how many want to mode
 model.sol = 103  # start=103
 cc = CaseControlDeck([
     'SUBCASE 1',
