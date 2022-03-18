@@ -91,8 +91,8 @@ yValueList = yValueList1 + yValueList2
 zValueList = zValueList1 + zValueList2
 
 # conm2 list merge
-conm2List = conm2List1 + conm2List2
-Mlump = Mlump1 + Mlump2
+conm2List = conm2List2 + conm2List1
+Mlump = Mlump2 + Mlump1
 
 # insert model.add_grid(id_no, x, y, z)
 for i, x, y, z in zip(idList, xValueList, yValueList, zValueList):
